@@ -4,8 +4,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="restaurante.css">
-	<link rel="stylesheet" type="text/css" href="all.min.css">
-
 	<title>restaurante</title>
 </head>
 <body>
@@ -241,6 +239,7 @@
 	<div class="copyrightText">
 		<p>Copyright <a href="">Online Tutorials</a>. All Right Reserved</p>
 	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 	<script type="text/javascript">
 		window.addEventListener("scroll",function(){
@@ -248,16 +247,29 @@
 			header.classList.toggle("sticky", window.scrollY > 0);
 		});
 
+		    // smooth scrolling
+			$('a[href*="#"]').on('click',function(e){
+				e.preventDefault();
+				$('html,body').animate({
+					scrollTop:  $($(this).attr('href')).offset().top,
+
+				},
+				300, 
+				'linear'
+				);
+
+			});
+
 		function toggleMenu(){
 			const menuToggle = document.querySelector(".menuToggle");
 			const navigation = document.querySelector(".navigation");
 			
-			if (menuToggle.classList.contains('active')) {
-				document.querySelector('body').style.overflow = "visible";
-			}else{
-				document.querySelector('body').style.overflow = "hidden";
+			// if (menuToggle.classList.contains('active')) {
+			// 	document.querySelector('body').style.overflow = "visible";
+			// }else{
+			// 	document.querySelector('body').style.overflow = "hidden";
 
-			}
+			// }
 			menuToggle.classList.toggle("active");
 			navigation.classList.toggle("active");
 		}
